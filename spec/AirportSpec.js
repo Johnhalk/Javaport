@@ -3,11 +3,11 @@ describe('Airport', function(){
     airport = new Airport();
   });
   beforeEach(function() {
-    spyOn(plane, 'land')
+    plane = jasmine.createSpyObj('plane', ['land', 'takeoff']);
   })
 
 
-  describe('is expected to', function(){
+  describe('when landing it', function(){
     it('stores the plane in the hangar',function(){
       airport.arrive(plane);
       expect(airport._hangar).toContain(plane)
@@ -15,15 +15,17 @@ describe('Airport', function(){
     });
   });
 
-  // describe('starts with', function () {
-  //   it('an empty array', function() {
-  //     expect(typeof airport._hangar).toBe([])
-  //   });
-  // });
-
   describe('is expected to', function(){
     it('respond to land', function(){
       expect(typeof airport.land).toBe("function")
+    });
+  });
+
+  describe('when taking off', function(){
+    it('removes a plane from the hangar', function(){
+      airport.depart(plane);
+      expect(airport._hangar).not.toContain(plane)
+      expect(plane.takeoff).toHaveBeenCalled();
     });
   });
 });
