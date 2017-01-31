@@ -1,5 +1,5 @@
 function Plane(){
-  this._landed = true
+  this._landed = false
 };
 
 Plane.prototype.takeoff = function(){

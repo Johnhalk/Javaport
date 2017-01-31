@@ -4,8 +4,8 @@ describe('Plane', function(){
   });
 
   describe('is expected to', function(){
-    it('confirm its landed', function(){
-      expect(plane._landed).toEqual(true)
+    it('confirm it is in the air', function(){
+      expect(plane._landed).toEqual(false)
     });
   });
 
